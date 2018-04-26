@@ -1,0 +1,136 @@
+计算机系统分为软件和硬件两部分 
+硬件： 5部分-运算器-控制器（中央处理器）-存储器- 输入设备-输出设备 
+软件：1. 系统软件-操作系统（人和计算机沟通的桥梁/平台）-Linux-通用操作系统-在任何硬件上都可以运行-内核-系统程序 
+2. 应用软件
+
+-今天看到的Linux系统，是一个自由的操作系统，而非免费的操作系统。它是由内核+外核一起组成的，在The Linux Kernel Archives网站，可以下载到不同版本的内核，甚至可以研究其源代码，自己发布，但须遵循圈内规则。 
+Linux的阿里云服务器配置，此处不做具体介绍，有需求的请自行某°及谷歌查阅。
+
+一、基本的命令 
+基于Xshell进行实验 —是自己和计算机进行沟通、对话的平台，给计算机发命令，计算机显示执行结果。 
+-ps 表示进程状态 全称（process state—后续类似），启动了2个进程状态，一个是自己本身，一个是bash，bash是shell的名字，也即是交互式的终端，执行交给它的命令（bash–Bourne-Again Shell） 
+Tab在这里可以自动补全要输入的代码 
+clear 清除屏幕 
+创建一个普通用户 
+adduser + name —adduser momo 
+修改用户密码 
+passwd + code —-passwd momo —–> new code 注意：这里如果输入的是password表示修改的是root账户的密码 
+普通用户的盘符为$ 超级管理员（root）的盘符为# 
+who/w —查看用户的登录状态，信息 
+who am i—查看自己的登陆信息 
+uname 查看自己的系统名字—Linux 
+hostname 查看主机的名字，此处看到的是阿里云服务器的名字 
+切换管理员身份 
+su + name 切换用户(switch user) —su root 从普通用户切换到超级管理员账户 — 这里需要输入超级管理员密码，反之不需要 
+su root 切换到root用户 
+su momo切换到momo用户 
+su othername 切换到其他用户也需要密码 
+history —显示之前输入的所有历史命令 
+!(感叹号) + 编号 —表示将之前历史命令的编号，再执行一遍。eg: !2 — 先使用history显示之前的命令，然后将编号（行号）为2 的之前输入过的命令在次执行一遍。 
+~(波浪线) —-表示用户主目录 
+pwd —-查看（打印）当前的工作路径/位置（print working directory） 
+cd —-change directory 
+cd / 去其他路径 
+cd .—-去上一级目录，一个点表示当前目录 
+cd .. 去前2级目录， 两个点表示上一级目录 
+ls 列出目录 查看文件 和文件夹（list directory contents ） 
+ls -a 查看隐藏文件 显示所有（all ） 
+ls -l 查看长格式文件的信息（long）—等价于ll，是ls -l的别名 
+ls -la 既查看长格式，也显示所有。 或者：ls -a -l 
+以.开头的文件和文件夹都是隐藏文件，用ls -la 查看 
+创建空文件 
+touch + name(需要设置文件的后缀名) 
+touch bob.txt 
+touch + .name— 表示创建隐藏文件， 查看 ls -la 
+创建文件需要回到root目录， su root 然后创建 touch bob.txt 
+cd ~ 去超级管理员主目录（pwd） 
+drwx d—directory 表示文件夹， 无d开头的文件均无文件夹 
+rwx —read write execute（执行）
+
+删除文件 
+rm + name —- rm bob.txt 删除文件，需要按y确认（remove） 
+凡是以.开头的文件都是隐藏文件。凡是以.开头的文件夹都是隐藏文件夹 
+rm 删除文件，有提问（remove） 
+rm -f — rm -f bob.txt —强制删除，无交互式没提问 f —force 
+mkdir + name — mkdir momo 创建名为momo的文件夹 
+删除文件夹 rmdir momo 
+rm -rf + 文件名 使用rf时，要慎之又慎，一旦删除系统文件，就无法恢复 
+rm -rf momo 递归的删除momo文件夹下的所有文件，及momo文件夹 
+rm -rf /* 删除所有文件 包括系统 
+查看文件内容 — cat + name —-cat bash_profile ( concatenate–连接) 
+有什么问题，找男人—man（manual 手册） —按空格键翻页 q退出 
+man cat man man man ls 
+这里的info（ infomation）比man更详细，可以看到更详细的信息 
+程序员喜欢用 info info ls 
+info man 
+info -a 
+或者使用 
+ls –help 获得帮助文档 
+ls –help | less(more) 翻页看的是按空格键 退出用q 这里的（|）表示一个管道 
+cat –help | less 
+echo —回声命令 
+echo hello, world! > hello.txt 重定向 输入原本的是终端，这里重新定向到txt文件中 
+cat hello.txt –>hello, world
+
+二、和文件相关的操作 
+touch momo 创建新的空文件，名为momo 
+cp —copy复制文件及文件夹 cp hello.txt xyz/ 还可以重新修改名字，在copy的时候 
+想看到详细的过程—cp -v abc/* xyz/ 
+重新修改名字 需要在同一目录下 —– mv hello.txt fuck.txt 
+mv —move剪切文件，或者给文件修该名字 — mv hello.txt xyz/ 
+grep 搜索文件中的字符串，查找 大而多的文件 
+cat qq.html | script — 只查看qq的标签 
+head 只看文件的前几行 前面的部分 head 5 + 文件名 看该文件的前5行 
+tail 只看文件的末尾几行，后面的部分 tail 10 + 文件名 看文件的最后10行 
+diff 文件的比较，需要起码2个文件（difference） 
+如果2个文件一样，没有可比性，要文件的内容不一样才能查出，在写代码的时候，可以异步看下2个文件的内容是否一样，哪里有差异 
+wc —word count 数文件中有多少个单词 
+wc hello.txt 表示1个文件，2行，13个字符加结束符 
+wc -w –words 
+wc -l –lines 
+wc -c –bytes 
+sort 对文件中排序 
+uniq 把文件中重复的内容去掉 unique 
+file 查看文件的相关信息(属性) file hello.txt —-ASCII text 
+wget 从网站上获取对象 wget + url 
+三、压缩和解压缩 
+压缩：gzip + 文件名 — gzip mmpicture.jpg —->后缀名变为mmpicture.jpg.gz 
+解压缩 gunzip + 文件名 —-gunzip mmpicture.jpg.gz—> mmpicture.jpg 
+归档和解归档 
+tar 把多个文件合并为一个文件 –together archieve 
+命令一样，但参数不一样 
+归档 tar -cvf text.tar .txt .html - v表示显示归档过程 f-指定文件名 
+解归档 tar -xvf text.tar 把一个文件拆分为多个文件
+
+关服务器 
+shut down init 0 
+重启服务器 
+init 6 
+四、命令 
+which 
+whereis 
+data 
+script 记录都做了些什么，录制脚本
+
+用于登录同一服务器的所有用户进行通讯 
+write 给某一个指定的人发消息 
+wall 给所有人发消息
+
+cpuinfo 
+meminfo 
+关系型数据库 
+MySQL —阿里的人玩到了极致 
+Oracle 
+非关系型数据库 — 实现高速缓存 
+Redis IO 
+下载地址：http://download.redis.io/releases/redis-3.2.11.tar.gz 
+wget —联网获取网络资源 
+wget + url —wget http://download.redis.io/releases/redis-3.2.11.tar.gz 
+这里下载的是使用的阿里的网络带宽，跟自己网络无关 
+查看是否下载成功 — ls 
+再查看下载在上面目录 — pwd —一般建议放在root（即~）目录下 如果不在，cd ~ ，返回用户主目录 
+先解压缩， 后解归档 
+解压缩：gunzip redis-3.2.11.tar.gz 
+解归档：tar -xvf redis-3.2.11.tar
+
+使用FTP上传文件时，要使用超级管理员账户登录
