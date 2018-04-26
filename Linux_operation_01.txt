@@ -12,7 +12,7 @@ Linux的阿里云服务器配置，此处不做具体介绍，有需求的请自行某°及谷歌查阅。
 Tab在这里可以自动补全要输入的代码 
 clear 清除屏幕 
 创建一个普通用户 
-adduser + name —adduser momo 
+adduser + name ---adduser momo 
 修改用户密码 
 passwd + code —-passwd momo —–> new code 注意：这里如果输入的是password表示修改的是root账户的密码 
 普通用户的盘符为$ 超级管理员（root）的盘符为# 
