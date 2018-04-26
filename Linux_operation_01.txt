@@ -14,24 +14,24 @@ clear 清除屏幕
 创建一个普通用户 
 adduser + name ---adduser momo 
 修改用户密码 
-passwd + code —-passwd momo —–> new code 注意：这里如果输入的是password表示修改的是root账户的密码 
+passwd + code ---passwd momo ---> new code 注意：这里如果输入的是password表示修改的是root账户的密码 
 普通用户的盘符为$ 超级管理员（root）的盘符为# 
 who/w —查看用户的登录状态，信息 
 who am i—查看自己的登陆信息 
 uname 查看自己的系统名字—Linux 
 hostname 查看主机的名字，此处看到的是阿里云服务器的名字 
 切换管理员身份 
-su + name 切换用户(switch user) —su root 从普通用户切换到超级管理员账户 — 这里需要输入超级管理员密码，反之不需要 
+su + name 切换用户(switch user) ---su root 从普通用户切换到超级管理员账户 --- 这里需要输入超级管理员密码，反之不需要 
 su root 切换到root用户 
 su momo切换到momo用户 
 su othername 切换到其他用户也需要密码 
 history —显示之前输入的所有历史命令 
 !(感叹号) + 编号 —表示将之前历史命令的编号，再执行一遍。eg: !2 — 先使用history显示之前的命令，然后将编号（行号）为2 的之前输入过的命令在次执行一遍。 
 ~(波浪线) —-表示用户主目录 
-pwd —-查看（打印）当前的工作路径/位置（print working directory） 
-cd —-change directory 
+pwd ---查看（打印）当前的工作路径/位置（print working directory） 
+cd ---change directory 
 cd / 去其他路径 
-cd .—-去上一级目录，一个点表示当前目录 
+cd .---去上一级目录，一个点表示当前目录 
 cd .. 去前2级目录， 两个点表示上一级目录 
 ls 列出目录 查看文件 和文件夹（list directory contents ） 
 ls -a 查看隐藏文件 显示所有（all ） 
